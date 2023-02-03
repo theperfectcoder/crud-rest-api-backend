@@ -1,0 +1,51 @@
+<?php
+
+namespace {{ namespace }};
+
+use App\Http\Requests\{{ directory }}\{{ controller }}Requests\CreateRequest;
+use App\Http\Requests\{{ directory }}\{{ controller }}Requests\UpdateRequest;
+use Illuminate\Http\JsonResponse;
+
+interface {{ class }}
+{
+
+    /**
+     * Display a listing of the resource.
+     * @return JsonResponse
+     */
+    public function index(): JsonResponse;
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  CreateRequest  $request
+     * @return JsonResponse
+     */
+    public function store(CreateRequest $request): JsonResponse;
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return JsonResponse
+     */
+    public function show(int $id): JsonResponse;
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  UpdateRequest  $request
+     * @param  int  $id
+     * @return JsonResponse
+     */
+    public function update(UpdateRequest $request, int $id): JsonResponse;
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return JsonResponse
+     */
+    public function destroy(int $id): JsonResponse;
+
+}

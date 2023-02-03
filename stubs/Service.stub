@@ -1,0 +1,89 @@
+<?php
+
+namespace {{ namespace }};
+
+use App\Clusters\{{ directory }}\{{ controller }}Interface;
+use App\Http\Requests\{{ directory }}\{{ controller }}Requests\CreateRequest;
+use App\Http\Requests\{{ directory }}\{{ controller }}Requests\UpdateRequest;
+use App\Models\{{ model }};
+use Illuminate\Http\JsonResponse;
+
+class {{ class }} implements {{ controller }}Interface
+{
+
+    /**
+     * @var {{ model }}
+     */
+    private {{ model }} ${{ modelVariable }};
+
+    /**
+     * @param {{ model }} ${{ modelVariable }}
+     */
+    public function __construct(
+        {{ model }} ${{ modelVariable }}
+    )
+    {
+        $this->{{ modelVariable }} = ${{ modelVariable }};
+    }
+
+    /**
+     * Display a listing of the resource.
+     * @return JsonResponse
+     */
+    public function index(): JsonResponse
+    {
+        ${{ modelVariable }}s = $this->{{ modelVariable }}->where('hotel_id', $hotel_id)->get();
+        return response()->json(${{ modelVariable }}s, 200);
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  CreateRequest  $request
+     * @return JsonResponse
+     */
+    public function store(CreateRequest $request): JsonResponse
+    {
+        ${{ modelVariable }} = $this->{{ modelVariable }}->create($request->all());
+        return response()->json(${{ modelVariable }}, 201);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return JsonResponse
+     */
+    public function show(int $id): JsonResponse
+    {
+        ${{ modelVariable }} = $this->{{ modelVariable }}->findOrFail($id);
+        return response()->json(${{ modelVariable }}, 200);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  UpdateRequest  $request
+     * @param  int  $id
+     * @return JsonResponse
+     */
+    public function update(UpdateRequest $request, int $id): JsonResponse
+    {
+        ${{ modelVariable }} = $this->{{ modelVariable }}->findOrFail($id);
+        ${{ modelVariable }}->update($request->all());
+        return response()->json(${{ modelVariable }}, 200);
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return JsonResponse
+     */
+    public function destroy(int $id): JsonResponse
+    {
+        ${{ modelVariable }} = $this->{{ modelVariable }}->findOrFail($id);
+        ${{ modelVariable }}->delete();
+        return response()->json(${{ modelVariable }}, 200);
+    }
+}

@@ -1,0 +1,82 @@
+<?php
+
+namespace {{ namespace }};
+
+use App\Clusters\{{ directory }}\{{ class }}Interface;
+use {{ rootNamespace }}Http\Controllers\Controller;
+use App\Http\Requests\{{ directory }}\{{ class }}Requests\CreateRequest;
+use App\Http\Requests\{{ directory }}\{{ class }}Requests\UpdateRequest;
+use Illuminate\Http\JsonResponse;
+
+class {{ class }} extends Controller
+{
+
+    /**
+     * @var {{ class }}Interface
+     */
+    private {{ class }}Interface ${{ controllerVariable }};
+
+    /**
+     * @param {{ class }}Interface ${{ controllerVariable }}
+     */
+    public function __construct(
+        {{ class }}Interface ${{ controllerVariable }}
+    )
+    {
+        $this->{{ controllerVariable }} = ${{ controllerVariable }};
+    }
+
+    /**
+     * Display a listing of the resource.
+     * @return JsonResponse
+     */
+    public function index(): JsonResponse
+    {
+        return $this->{{ controllerVariable }}->index($hotel_id);
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  CreateRequest  $request
+     * @return JsonResponse
+     */
+    public function store(CreateRequest $request): JsonResponse
+    {
+        return $this->{{ controllerVariable }}->store($request);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return JsonResponse
+     */
+    public function show(int $id): JsonResponse
+    {
+        return $this->{{ controllerVariable }}->show($id);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  UpdateRequest  $request
+     * @param  int  $id
+     * @return JsonResponse
+     */
+    public function update(UpdateRequest $request, int $id): JsonResponse
+    {
+        return $this->{{ controllerVariable }}->update($request, $id);
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return JsonResponse
+     */
+    public function destroy(int $id): JsonResponse
+    {
+        return $this->{{ controllerVariable }}->destroy($id);
+    }
+}
